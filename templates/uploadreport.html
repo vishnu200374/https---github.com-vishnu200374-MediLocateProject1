@@ -1,0 +1,55 @@
+{% extends 'dochome.html' %}
+{% block content %}
+<div class="card text-bg-dark">
+    <img src="/static/geometric.png" class="card-img" alt="..." style="height:38rem">
+    <div class="card-img-overlay">
+        <center>
+            <div class="card" style="width: 30rem;margin-top:100px">
+
+                <div class="card-body">
+                    <h5 class="card-title">Upload Report</h5>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <form class="row g-6" action="{% url 'fileupload' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+
+                        <div class="mb-3">
+                            <input class="form-control" type="text" id="formFileMultiple" placeholder="Enter User Email"
+                                name="reqid" value="{{reqid}}" style="text-align:center" required readonly hidden>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="form-control" type="email" id="formFileMultiple"
+                                placeholder="Enter User Email" name="useremail" value="{{dc}}" style="text-align:center"
+                                required readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="form-control" type="file" id="formFileDisabled" placeholder="Enter Password"
+                                name="myfile" style="text-align:center" required>
+                        </div>
+
+
+                        <center>
+                            <button type="submit" class="btn btn-primary" style="width: 80px;">Upload</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'dochome.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <h2>Doctors List</h2>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table class="table table-striped">
+        <th>Id</th>
+        <th>itching</th>
+        <th>skin_rash</th>
+        <th>nodal_skin_eruptions</th>
+        <th>continuous_sneezing</th>
+        <th>shivering</th>
+        <th>chills</th>
+        <th>joint_pain</th>
+        <th>stomach_pain</th>
+        <th>acidity</th>
+        <th>ulcers_on_tongue</th>
+        <th>muscle_wasting</th>
+        <th>vomiting</th>
+        <th>burning_micturition</th>
+        <th>spotting_urination</th>
+        <th>fatigue</th>
+        <th>weight_gain</th>
+        <th>anxiety</th>
+        <th>cold_hands_and_feets</th>
+        <th>Disease</th>
+        <th>Report</th>
+        {% for i in dc %}
+        <tr>
+            <td style="text-align:center">{{i.pid}}</td>
+            {% if i.itching == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.skin_rash == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.nodal_skin_eruptions == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.continuous_sneezing == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.shivering == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.chills == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.joint_pain == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.stomach_pain == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.acidity == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.ulcers_on_tongue == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.muscle_wasting == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.vomiting == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+
+            {% if i.burning_micturition == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.spotting_urination == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.fatigue == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+            {% if i.weight_gain == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+
+            {% if i.anxiety == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+
+            {% if i.cold_hands_and_feets == '0' %}
+            <td style="text-align:center">No</td>
+            {% else %}
+            <td style="text-align:center">Yes</td>
+            {% endif %}
+
+
+            <td style="text-align:center">{{i.disease}}</td>
+            <td style="text-align:center"><a href="{% url 'uploadreport' pid %}" class="btn btn-secondary">Upload</a>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

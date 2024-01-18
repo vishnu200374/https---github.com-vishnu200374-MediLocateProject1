@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="card text-bg-dark">
+    <img src="/static/geometric.png" class="card-img" alt="..." style="height:36rem">
+    <div class="card-img-overlay">
+        <center>
+            <div class="card" style="width: 30rem;height:28rem;margin-top:50px">
+                <div class="card-body">
+                    <h5 class="card-title">Patient Registration Page</h5>
+                    <form class="row g-6" action="{% url 'patientsignup' %}" method="post"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input class="form-control" type="text" id="formFile" placeholder="Enter User Name"
+                                style="text-align:center" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="email" id="formFileMultiple"
+                                placeholder="Enter User Email" name="useremail" style="text-align:center" required>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="password" patten="[0-9]{8}" id="formFileDisabled"
+                                placeholder="Enter Password" name="password" style="text-align:center" required>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control form-control-sm" type="password" patten="[0-9]{8}"
+                                id="formFileSm" placeholder="Enter Confirm Password" name="confirmpassword"
+                                style="text-align:center" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="form-control form-control-sm" type="text" name="address"
+                                placeholder="Enter Address" style="text-align:center" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Profile Image</label>
+                            <input class="form-control form-control-sm" type="file" name="profile"
+                                style="text-align:center" required>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-primary" style="width: 80px;">Signup</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+{% endblock %}

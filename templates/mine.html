@@ -1,0 +1,59 @@
+{% extends "patienthome.html" %}
+{% block content %}
+<div class="card text-bg-dark">
+    <img src="/static/geometric.png" class="card-img" alt="..." style="height:42rem">
+    <div class="card-img-overlay">
+        <center>
+            <div class="card" style="width: 40rem;height:15rem;margin-top:50px">
+                <div class="card-body">
+                    <h5 class="card-title">File Conetnt Page</h5>
+
+
+                    <div class="mb-3">
+                        <textarea id="fileContent" class="form-control" type="text" placeholder="File Content"
+                            name="filecontent" style="text-align:center" readonly>{{content}}</textarea>
+                    </div>
+
+                    <center>
+                        <!-- Add an ID to your button for easier selecting with JavaScript -->
+                        <button id="downloadBtn" type="button" class="btn btn-primary"
+                            style="width: 120px;">Download</button>
+                    </center>
+
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+        // Get the content from the textarea
+        var content = document.getElementById('fileContent').value;
+
+        // Create a Blob from the content
+        var blob = new Blob([content], { type: 'text/plain' });
+
+        // Create a new anchor element
+        var a = document.createElement('a');
+
+        // Set the href of the anchor to a URL created from the Blob
+        a.href = window.URL.createObjectURL(blob);
+
+        // Set the download attribute of the anchor to the desired file name
+        a.download = '{{filename}}';
+
+        // Append the anchor to the body
+        document.body.appendChild(a);
+
+        // Trigger a click event on the anchor
+        a.click();
+
+        // Remove the anchor from the body
+        document.body.removeChild(a);
+    });
+</script>
+
+
+{% endblock %}

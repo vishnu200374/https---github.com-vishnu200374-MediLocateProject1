@@ -1,0 +1,66 @@
+{% extends "patienthome.html" %}
+{% block content %}
+<div class="card text-bg-dark">
+    <img src="/static/geometric.png" class="card-img" alt="..." style="height:34rem">
+    <div class="card-img-overlay">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <center>
+            <div class="card" style="width: 80rem;margin-top:10px">
+                <div class="card-body">
+                    <h5 class="card-title">Blood Group Information</h5>
+                    <form method="post" class="form-control" action="{% url 'bloodgroup' %}">
+                        {% csrf_token %}
+                        <div class="col-auto">
+                            <input type="text" class="form-control" id="search" name="search"
+                                placeholder="Search Blood Group" style="width:30%;text-align: center;">
+                        </div><br>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Search Blood Group</button>
+                        </div>
+                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Blood Group</th>
+                                <th scope="col">Units</th>
+                                <th scope="col">Hospital Name</th>
+                                <th scope="col">Hospital Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data %}
+                            <tr>
+                                <td>{{i.id}}</td>
+                                <td>{{i.blood_group}}</td>
+                                <td>{{i.units}}</td>
+                                <td>{{i.hospital_name}}</td>
+                                <td><a href="{% url 'show_map' i.hospital_address %}">{{i.hospital_address}}</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </center>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

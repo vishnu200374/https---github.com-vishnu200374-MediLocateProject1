@@ -1,0 +1,38 @@
+{% extends 'dochome.html' %}
+{% block content %}
+
+
+<div class="container">
+    <h2>Doctors List</h2>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table class="table table-striped">
+        <th>Id</th>
+        <th>Patient Email</th>
+        <th>Appointment Date</th>
+
+        <th>Symptoms</th>
+        {% for i in dc %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.patientemail}}</td>
+            <td>{{i.appointmentdate}}</td>
+            <td><a href="{% url 'reportview' %}" class="btn btn-info">View Report</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

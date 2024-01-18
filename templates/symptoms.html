@@ -1,0 +1,207 @@
+{% extends "patienthome.html" %}
+{% block content %}
+
+<div class="card text-bg-dark">
+    <img src="/static/geometric.png" class="card-img" alt="..." style="height:39rem">
+    <div class="card-img-overlay">
+        <center>
+            <div class="card" style="width: 92rem;height:28rem;margin-top:10px">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">Provide Symptoms</h5>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <a href="{% url 'doctorslist' %}">
+                        <h1> {{msg}}</h1>
+                    </a>
+                    <form class="row g-6" action="{% url 'symptoms' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row g-4 align-items-center">
+                            <div class="col-auto">
+                                <label><b>Itching</b></label>
+                                <select id="inputPassword6" class="form-control" name="itching"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>skin_rash</b></label>
+                                <select id="inputPassword6" class="form-control" name="skin_rash"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>nodal_skin_eruptions</b></label>
+                                <select id="inputPassword6" class="form-control" name="nodal_skin_eruptions"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>continuous_sneezing</b></label>
+                                <select id="inputPassword6" class="form-control" name="continuous_sneezing"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>shivering</b></label>
+                                <select id="inputPassword6" class="form-control" name="shivering"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>chills</b></label>
+                                <select id="inputPassword6" class="form-control" name="chills"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>joint_pain</b></label>
+                                <select id="inputPassword6" class="form-control" name="joint_pain"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>stomach_pain</b></label>
+                                <select id="inputPassword6" class="form-control" name="stomach_pain"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>acidity</b></label>
+                                <select id="inputPassword6" class="form-control" name="acidity"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>ulcers_on_tongue</b></label>
+                                <select id="inputPassword6" class="form-control" name="ulcers_on_tongue"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>muscle_wasting</b></label>
+                                <select id="inputPassword6" class="form-control" name="muscle_wasting"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>vomiting</b></label>
+                                <select id="inputPassword6" class="form-control" name="vomiting"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>burning_micturition</b></label>
+                                <select id="inputPassword6" class="form-control" name="burning_micturition"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>spotting_urination</b></label>
+                                <select id="inputPassword6" class="form-control" name="spotting_urination"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>fatigue</b></label>
+                                <select id="inputPassword6" class="form-control" name="fatigue"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>weight_gain</b></label>
+                                <select id="inputPassword6" class="form-control" name="weight_gain"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>anxiety</b></label>
+                                <select id="inputPassword6" class="form-control" name="anxiety"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label><b>cold_hands_and_feets</b></label>
+                                <select id="inputPassword6" class="form-control" name="cold_hands_and_feets"
+                                    style="width: 214px;text-align:center">
+                                    <option value="1">Yes</option>
+                                    <option value="0" selected>No</option>
+
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <br>
+                        <center>
+                            <button type="submit" class="btn btn-primary"
+                                style="width: 80px;margin-top: 20px;">Submit</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

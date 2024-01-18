@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="card text-bg-dark">
+    <img src="/static/geometric.png" class="card-img" alt="..." style="height:36rem">
+    <div class="card-img-overlay">
+        <center>
+            <div class="card" style="width: 30rem;height:30rem;margin-top:20px">
+                <div class="card-body">
+                    <h5 class="card-title">Doctor Registration Page</h5>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <form class="row g-6" action="{% url 'docsignup' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-1">
+                            <input class="form-control" type="text" id="formFile" placeholder="Enter User Name"
+                                style="text-align:center" name="username" required>
+
+                        </div>
+                        <div class="mb-1">
+                            <input class="form-control" type="email" id="formFileMultiple"
+                                placeholder="Enter User Email" name="useremail" style="text-align:center" required>
+                        </div>
+                        <div class="mb-1">
+                            <input class="form-control" type="password" patten="[0-9]{8}" id="formFileDisabled"
+                                placeholder="Enter Password" name="password" style="text-align:center" required>
+                        </div>
+                        <div class="mb-1">
+                            <input class="form-control form-control-sm" type="password" patten="[0-9]{8}"
+                                id="formFileSm" placeholder="Enter Confirm Password" name="confirmpassword"
+                                style="text-align:center" required>
+                        </div>
+                        <div class="mb-1">
+                            <select class="form-control form-control-sm" id="formFileSm" name="department"
+                                placeholder="Enter Address" style="text-align:center">
+                                <option value="null">Select Department</option>
+                                <option value="general">General Medicine</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="anesthesiology">Anesthesiology</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="pulmonology">Pulmonology</option>
+                                <option value="urology">Urology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="hematology">Hematology and Oncology</option>
+                            </select>
+
+                        </div>
+
+                        <div class="mb-1">
+                            <input class="form-control form-control-sm" type="text" name="address"
+                                placeholder="Enter Address" style="text-align:center" required>
+                        </div>
+                        <div class="mb-1">
+                            <label>Profile Image</label>
+                            <input class="form-control form-control-sm" type="file" name="profile"
+                                style="text-align:center" required>
+                        </div>
+                        <div class="mb-1">
+
+                            <input class="form-control form-control-sm" type="text" name="hospitalname"
+                                style="text-align:center" placeholder="Hospital Name" required>
+                        </div>
+                        <div class="mb-1">
+
+                            <input class="form-control form-control-sm" type="text" name="hospitaladdress"
+                                style="text-align:center" placeholder="Hospital Address" required>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-primary" style="width: 80px;">Signup</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'dochome.html' %}
+{% block content %}
+<div class="container">
+    <h2>Doctors List</h2>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table class="table table-striped">
+        <th>Id</th>
+        <th>Request Id</th>
+        <th>File Name</th>
+        <th>Patient Email</th>
+        <th>Doctor Email</th>
+        <th>Key</th>
+        {% for i in dc %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.reqid}}</td>
+            <td>{{i.filename}}</td>
+            <td>{{i.patientemail}}</td>
+            <td>{{i.doctoremail}}</td>
+            <td><a href="{% url 'sendkey' i.reqid %}" class="btn btn-success">Sendkey</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "patienthome.html" %}
+{% block content %}
+
+<div class="container">
+    <h2>Doctors List</h2>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <table class="table table-striped">
+        <th>Id</th>
+        <th>RequestedId</th>
+        <th>File Name</th>
+        <th>File Content</th>
+        <th>Download</th>
+
+        {% for i in dc %}
+        <tr>
+
+            <td>{{i.id}}</td>
+            <td>{{i.reqid}}</td>
+            <td>{{i.filename}}</td>
+            <td>{{i.filecontent}}</td>
+
+            <td><a href="{% url 'downloadfile' i.reqid i.filename %}" class="btn btn-success">Download</a></td>c
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+
+{% endblock %}
